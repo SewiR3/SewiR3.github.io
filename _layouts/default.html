@@ -64,70 +64,135 @@
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
 
-    <!-- ====== DARK MODE TOGGLE ====== -->
-    <style>
-      .theme-toggle {
-        position: fixed; 
-        bottom: 20px; 
-        right: 20px; 
-        padding: 10px 20px; 
-        border-radius: 30px; 
-        background: white;
-        color: #1a1a1a; 
-        border: 1px solid #88b4ff; 
-        cursor: pointer; 
-        z-index: 9999;
-        font-family: inherit;
-        font-size: 14px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      }
-      /* Dark mode overrides for the minimal theme */
-      body.dark-mode {
-        background-color: #1a1a1a !important;
-        color: #e0e0e0 !important;
-      }
-      body.dark-mode .wrapper {
-        background-color: #1a1a1a !important;
-      }
-      body.dark-mode header,
-      body.dark-mode footer {
-        background-color: #1a1a1a !important;
-      }
-      body.dark-mode a {
-        color: #88b4ff !important;
-      }
-      body.dark-mode h1, 
-      body.dark-mode h2, 
-      body.dark-mode h3,
-      body.dark-mode p,
-      body.dark-mode li {
-        color: #e0e0e0 !important;
-      }
-      body.dark-mode .view a {
-        color: #88b4ff !important;
-      }
-    </style>
+    <!-- ====== DARK MODE TOGGLE (enhanced) ====== -->
+<style>
+  /* Toggle button – always visible and dark‑friendly */
+  .theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: #f0f0f0;
+    color: #1a1a1a;
+    border: 1px solid #88b4ff;
+    cursor: pointer;
+    z-index: 9999;
+    font-family: inherit;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    transition: 0.2s;
+  }
+  .theme-toggle:hover {
+    background: #e0e0e0;
+  }
 
-    <button class="theme-toggle" id="theme-toggle-btn">🌙 Dark</button>
-    <script>
-      (function() {
-        const btn = document.getElementById('theme-toggle-btn');
-        // Check if dark mode was previously saved
-        const isDark = localStorage.getItem('darkMode') === 'true';
-        if (isDark) {
-          document.body.classList.add('dark-mode');
-          btn.textContent = 'Light';
-        }
-        
-        btn.addEventListener('click', function() {
-          document.body.classList.toggle('dark-mode');
-          const nowDark = document.body.classList.contains('dark-mode');
-          localStorage.setItem('darkMode', nowDark);
-          btn.textContent = nowDark ? 'Light' : 'Dark';
-        });
-      })();
-    </script>
-    <!-- ====== END DARK MODE TOGGLE ====== -->
+  /* ===== DARK MODE OVERRIDES ===== */
+  body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #e0e0e0 !important;
+  }
+  body.dark-mode .wrapper {
+    background-color: #1a1a1a !important;
+  }
+  body.dark-mode header,
+  body.dark-mode footer {
+    background-color: #1a1a1a !important;
+  }
+  body.dark-mode a {
+    color: #88b4ff !important;
+  }
+  body.dark-mode a:hover {
+    color: #bbd4ff !important;
+  }
+  /* Headings, paragraphs, lists */
+  body.dark-mode h1,
+  body.dark-mode h2,
+  body.dark-mode h3,
+  body.dark-mode h4,
+  body.dark-mode h5,
+  body.dark-mode h6,
+  body.dark-mode p,
+  body.dark-mode li,
+  body.dark-mode .view a {
+    color: #e0e0e0 !important;
+  }
+  /* Code & pre */
+  body.dark-mode code,
+  body.dark-mode pre {
+    background-color: #2d2d2d !important;
+    color: #f8f8f2 !important;
+    border-color: #444 !important;
+  }
+  body.dark-mode pre {
+    border: 1px solid #444 !important;
+  }
+  /* Blockquotes */
+  body.dark-mode blockquote {
+    border-left-color: #88b4ff !important;
+    color: #ccc !important;
+  }
+  /* Tables */
+  body.dark-mode table {
+    border-color: #444 !important;
+    color: #e0e0e0 !important;
+  }
+  body.dark-mode th,
+  body.dark-mode td {
+    border-color: #444 !important;
+    background-color: #1a1a1a !important;
+  }
+  body.dark-mode th {
+    background-color: #2a2a2a !important;
+  }
+  /* Horizontal rule */
+  body.dark-mode hr {
+    border-color: #444 !important;
+  }
+  /* Breadcrumb (if present) */
+  body.dark-mode div[style*="border-bottom"] {
+    border-bottom-color: #444 !important;
+  }
+  /* Downloads list (if shown) */
+  body.dark-mode ul.downloads {
+    background-color: #2a2a2a !important;
+    border-color: #444 !important;
+  }
+  body.dark-mode ul.downloads li {
+    border-color: #444 !important;
+  }
+  body.dark-mode ul.downloads a {
+    color: #88b4ff !important;
+  }
+  /* Toggle button itself in dark mode */
+  body.dark-mode .theme-toggle {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #88b4ff;
+  }
+  body.dark-mode .theme-toggle:hover {
+    background: #3a3a3a;
+  }
+</style>
+
+<button class="theme-toggle" id="theme-toggle-btn">Dark</button>
+<script>
+  (function() {
+    const btn = document.getElementById('theme-toggle-btn');
+    const isDark = localStorage.getItem('darkMode') === 'true';
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      btn.textContent = 'Light';
+    }
+    btn.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      const nowDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', nowDark);
+      btn.textContent = nowDark ? 'Light' : 'Dark';
+    });
+  })();
+</script>
+<!-- ====== END DARK MODE TOGGLE ====== -->
 
   </body>
 </html>
