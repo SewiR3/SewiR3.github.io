@@ -55,7 +55,7 @@
         border-radius: 30px; 
         background: #1a1a1a; 
         color: white; 
-        border: 1px solid #2100da; 
+        border: 1px solid #88b4ff; 
         cursor: pointer; 
         z-index: 9999;
         font-family: inherit;
@@ -97,14 +97,14 @@
         const isDark = localStorage.getItem('darkMode') === 'true';
         if (isDark) {
           document.body.classList.add('dark-mode');
-          btn.textContent = '☀️';
+          btn.textContent = 'Light';
         }
         
         btn.addEventListener('click', function() {
           document.body.classList.toggle('dark-mode');
           const nowDark = document.body.classList.contains('dark-mode');
           localStorage.setItem('darkMode', nowDark);
-          btn.textContent = nowDark ? '☀️' : '🌙';
+          btn.textContent = nowDark ? 'Light' : 'Dark';
         });
       })();
     </script>
