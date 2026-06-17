@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 2026
+title: "2026"
 permalink: /projects/2026
 ---
 

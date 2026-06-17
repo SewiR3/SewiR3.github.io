@@ -35,23 +35,24 @@
       </header>
       <section>
         <!-- Breadcrumb navigation -->
-    <div style="margin-bottom: 20px; padding: 10px 0; font-size: 0.9em; border-bottom: 1px solid #ddd;">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      
-      <!-- This generates the breadcrumb trail based on the page URL -->
-      {% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
-      {% for crumb in crumbs offset: 1 %}
-        {% if forloop.last %}
-          <span style="margin: 0 8px;">›</span>
-          <span>{{ page.title }}</span>
-        {% else %}
-          <span style="margin: 0 8px;">›</span>
-          <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for c in crumbs limit: crumb_limit %}{{ c | append: '/' }}{% endfor %}">
-            {{ crumb | replace:'-',' ' | capitalize }}
-          </a>
-        {% endif %}
-      {% endfor %}
-    </div>
+      <!-- Breadcrumb navigation (no trailing slashes) -->
+      <div style="margin-bottom: 20px; padding: 10px 0; font-size: 0.9em; border-bottom: 1px solid #ddd;">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        
+        {% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
+        {% for crumb in crumbs offset: 1 %}
+          {% if forloop.last %}
+            <span style="margin: 0 8px;">›</span>
+            <span>{{ page.title }}</span>
+          {% else %}
+            <span style="margin: 0 8px;">›</span>
+            {% assign path_parts = crumbs | slice: 1, forloop.index | join: '/' %}
+            <a href="{{ path_parts | relative_url }}">
+              {{ crumb | replace:'-',' ' | capitalize }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
         {{ content }}
       </section>
       <footer>
