@@ -55,7 +55,7 @@
         border-radius: 30px; 
         background: #333; 
         color: white; 
-        border: 1px solid #555; 
+        border: 1px solid #2100da; 
         cursor: pointer; 
         z-index: 9999;
         font-family: inherit;
@@ -64,11 +64,11 @@
       }
       /* Dark mode overrides for the minimal theme */
       body.dark-mode {
-        background-color: #1a1a1a !important;
+        background-color: #020092 !important;
         color: #e0e0e0 !important;
       }
       body.dark-mode .wrapper {
-        background-color: #1a1a1a !important;
+        background-color: #020092 !important;
       }
       body.dark-mode header,
       body.dark-mode footer {
@@ -97,14 +97,14 @@
         const isDark = localStorage.getItem('darkMode') === 'true';
         if (isDark) {
           document.body.classList.add('dark-mode');
-          btn.textContent = '☀️ Light';
+          btn.textContent = '☀️';
         }
         
         btn.addEventListener('click', function() {
           document.body.classList.toggle('dark-mode');
           const nowDark = document.body.classList.contains('dark-mode');
           localStorage.setItem('darkMode', nowDark);
-          btn.textContent = nowDark ? '☀️ Light' : '🌙 Dark';
+          btn.textContent = nowDark ? '☀️' : '🌙';
         });
       })();
     </script>
