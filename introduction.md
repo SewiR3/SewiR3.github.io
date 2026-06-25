@@ -1,6 +1,5 @@
 ---
 title: Introduction
-permalink: /
 ---
 
 ## Introduction
