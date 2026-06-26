@@ -155,11 +155,6 @@ During charging of the capacitor ($C_1$), the lower comparator (inside Timer B o
 
 Since both branches shared the same nodes at both ends (between Output pin and GND), all the LEDs illuminated simultaneously.
 
-<figure>
-  <img src="{{ '' | relative_url }}" alt="Image is not available" style="width:100%; max-width:600px;">
-  <figcaption>Internal block diagram of a 555 timer (Timer A/B of the 556). Reproduced from Horowitz & Hill, <em>The Art of Electronics</em>, 3rd ed., 2015, p. 428.</figcaption>
-</figure>
-
 **Fix #1:**
 
 1. **Swapped the positions of each of the LEDs and their adjacent resistors in branch 2.**
