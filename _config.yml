@@ -11,9 +11,6 @@ defaults:
     values:
       title: "Severin Vire"
 
-kramdown:
-  syntax_highlighter: rouge
-
 exclude:
   - Gemfile
   - Gemfile.lock
