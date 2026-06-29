@@ -22,13 +22,12 @@ All technical content, including code, circuit designs, and project documentatio
 
 The following measures are in place to ensure the security and integrity of this repository:
 
-- All dependencies are managed via Bundler and locked with `Gemfile.lock`
 - HTTPS is enforced on the site
 - No sensitive information (API keys, credentials) is stored in this repository
 - Dependabot is enabled to alert me to security vulnerabilities in dependencies
 - This is a static site with no user-generated content, eliminating XSS and injection risks.
 
-If you discover a security vulnerability, please contact me directly at severinvire@gmail.com rather than opening a public issue.
+If you discover a security vulnerability, please contact me directly through my email rather than opening a public issue.
 
 ## License and Usage
 
@@ -45,19 +44,6 @@ You are strictly prohibited from:
 - Creating derivative works based on this repository.
 - Cloning or forking this repository for public or private use.
 
-For any requests or permissions, please contact me directly at severinvire@gmail.com.
-
 ## Contributing
 
 This is a personal portfolio and is not open to contributions. Feedback and suggestions are welcome via email.
-
-## Contact
-
-- LinkedIn: [https://www.linkedin.com/in/severin-vire-001439374/](https://www.linkedin.com/in/severin-vire-001439374/)
-- Email: [severinvire@gmail.com](mailto:severinvire@gmail.com)
-
-## Author
-
-**Severin Vire**  
-First-year Engineering Student  
-Monash University (2026)
